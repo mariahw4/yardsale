@@ -25,12 +25,12 @@ Listing.init(
     },
     image: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      // allowNull: false,
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW,
     },
     user_id: {
       type: DataTypes.INTEGER,
