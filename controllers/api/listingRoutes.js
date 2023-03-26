@@ -1,80 +1,91 @@
-const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Listing, User, Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const sequelize = require("../../config/connection");
+const { Listing, User, Comment } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-  const listingData = await Listing.findAll({
-          attributes: ['id', 'title', 'description', 'price', 'image', 'date_created'],
-          
-          include: [{
-                  model: User,
-                  attributes: [
-                      'username',
-                  ]
-              },
+    const listingData = await Listing.findAll({
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "price",
+        "image",
+        "date_created",
+      ],
 
-              {
-                  model: Comment,
-                  attributes: ['id', 'comment_content', 'listing_id', 'user_id'],
-                  include: {
-                      model: User,
-                      attributes: ['username']
-                  }
-              },
-          ]
-        })
-      
-          if (!listingData) {
-            res.status(404).json({ message: 'No listing found with this id!' });
-            return;
-          }
-      
-          res.status(200).json(listingData);
-        } catch (err) {
-          res.status(500).json(err);
-        }
-      });
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
 
-      router.get('/:id', async (req, res) => {
-        try {
-        const listingData = await Listing.findOne({
-                where: {
-                  id: req.params.id
-                },
-                attributes: ['id', 'title', 'description', 'price', 'image', 'date_created'],
-                
-                include: [{
-                        model: User,
-                        attributes: [
-                            'username',
-                        ]
-                    },
-      
-                    {
-                        model: Comment,
-                        attributes: ['id', 'comment_content', 'blog_id', 'user_id'],
-                        include: {
-                            model: User,
-                            attributes: ['username']
-                        }
-                    },
-                ]
-              })
-                if (!listingData) {
-                  res.status(404).json({ message: 'No listing found with this id!' });
-                  return;
-                }
-            
-                res.status(200).json(listingData);
-              } catch (err) {
-                res.status(500).json(err);
-              }
-            });
+        {
+          model: Comment,
+          attributes: ["id", "comment_content", "listing_id", "user_id"],
+          include: {
+            model: User,
+            attributes: ["name"],
+          },
+        },
+      ],
+    });
 
+    if (!listingData) {
+      res.status(404).json({ message: "No listing found with this id!" });
+      return;
+    }
 
-router.post('/', withAuth, async (req, res) => {
+    res.status(200).json(listingData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const listingData = await Listing.findOne({
+      where: {
+        id: req.params.id,
+      },
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "price",
+        "image",
+        "date_created",
+      ],
+
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+
+        {
+          model: Comment,
+          attributes: ["id", "comment_content", "blog_id", "user_id"],
+          include: {
+            model: User,
+            attributes: ["name"],
+          },
+        },
+      ],
+    });
+    if (!listingData) {
+      res.status(404).json({ message: "No listing found with this id!" });
+      return;
+    }
+
+    res.status(200).json(listingData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/", withAuth, async (req, res) => {
   try {
     const newListing = await Listing.create({
       ...req.body,
@@ -87,43 +98,49 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
-  const listingData = await Listing.findOne({
-          where: {
-            id: req.params.id
+    const listingData = await Listing.findOne({
+      where: {
+        id: req.params.id,
+      },
+      attributes: [
+        "id",
+        "title",
+        "description",
+        "price",
+        "image",
+        "date_created",
+      ],
+
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+
+        {
+          model: Comment,
+          attributes: ["id", "comment_content", "blog_id", "user_id"],
+          include: {
+            model: User,
+            attributes: ["name"],
           },
-          attributes: ['id', 'title', 'description', 'price', 'image', 'date_created'],
-          
-          include: [{
-                  model: User,
-                  attributes: [
-                      'username',
-                  ]
-              },
+        },
+      ],
+    });
+    if (!listingData) {
+      res.status(404).json({ message: "No listing found with this id!" });
+      return;
+    }
 
-              {
-                  model: Comment,
-                  attributes: ['id', 'comment_content', 'blog_id', 'user_id'],
-                  include: {
-                      model: User,
-                      attributes: ['username']
-                  }
-              },
-          ]
-        })
-          if (!listingData) {
-            res.status(404).json({ message: 'No listing found with this id!' });
-            return;
-          }
-      
-          res.status(200).json(listingData);
-        } catch (err) {
-          res.status(500).json(err);
-        }
-      });
+    res.status(200).json(listingData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const listingData = await Listing.destroy({
       where: {
@@ -133,7 +150,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!listingData) {
-      res.status(404).json({ message: 'No listing found with this id!' });
+      res.status(404).json({ message: "No listing found with this id!" });
       return;
     }
 
