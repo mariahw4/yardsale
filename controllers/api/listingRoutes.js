@@ -64,14 +64,15 @@ router.get("/:id", async (req, res) => {
           attributes: ["name"],
         },
 
-        {
-          model: Comment,
-          attributes: ["id", "comment_content", "blog_id", "user_id"],
-          include: {
-            model: User,
-            attributes: ["name"],
-          },
-        },
+        // ~~~ For comments feature. Turned off for now ~~~
+        // {
+        //   model: Comment,
+        //   attributes: ["id", "comment_content", "blog_id", "user_id"],
+        //   include: {
+        //     model: User,
+        //     attributes: ["name"],
+        //   },
+        // },
       ],
     });
     if (!listingData) {
