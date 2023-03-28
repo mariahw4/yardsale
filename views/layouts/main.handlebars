@@ -22,13 +22,23 @@
                 aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
         </div>
-        <p class="align-self-center mx-3"><a href="">Login/Logout</a></p>
+        {{#if loggedIn}}
+        {{!-- <a href="/" class="align-self-center mx-3"></a> | --}}
+        <a class="no-button align-self-center mx-3" id="logout">Logout</a>
+        {{else}}
+        <a href="/login" class="align-self-center mx-3">Login</a>
+        {{/if}}
     </header>
     <div class="d-flex my-3 mx-3 justify-content-end">
         <button type="button" class="btn btn-primary btn-lg ">Create Listing</button>
     </div>
     {{{body}}}
 
+ {{!-- {{#if loggedIn}} --}}
+  <script src="/js/logout.js"></script>
+  {{!-- {{/if}} --}}
 </body>
 
 </html>
+
+ 

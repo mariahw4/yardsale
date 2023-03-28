@@ -27,21 +27,22 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', {
       listings,
-      logged_in: req.session.logged_in
+      loggedIn: req.session.loggedIn
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// router.get("/login", (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.loggedIn) {
-//     res.redirect("/profile");
-//     return;
-//   }
+router.get("/login", (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
 
-//   res.render("login");
-// });
+  res.render("login");
+});
+
 
 module.exports = router;
