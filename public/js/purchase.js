@@ -14,8 +14,10 @@ const purchaseHandler = async () => {
   }
 };
 
+// Reload page after purchase confirmation to update with SOLD and remove Purchase btn
 const reloadPage = () => location.reload();
 
+// Take users to homepage when clicking Back To Listings btn
 const homeBtnHandler = () => location.replace("/");
 
 document
