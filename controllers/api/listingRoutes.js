@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
         "price",
         "image",
         "date_created",
+        "sold",
       ],
 
       include: [
