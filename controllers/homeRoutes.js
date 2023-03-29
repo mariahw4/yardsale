@@ -10,7 +10,7 @@ const withAuth = require("../utils/auth");
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all listings and JOIN with user data
     const listingData = await Listing.findAll({
       include: [
         {
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.loggedIn) {
-    res.redirect("/");
+    res.redirect("/profile");
     return;
   }
 
