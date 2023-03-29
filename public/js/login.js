@@ -1,55 +1,46 @@
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
-    // Collect values from the login form
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (email && password) {
-      // Send a POST request to the API endpoint
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { Listing, User, Comment } = require('../models');
+const withAuth = require('../utils/auth');
+
+
+  router.get('/', withAuth, async (req, res) => {
+    try {
+      // Find the logged in user based on the session ID
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Listing }],
       });
-      console.log("response", response);
-      if (response.ok) {
-        // If successful, redirect the browser to the dashboard page
-        document.location.replace('/');
-      } else {
-        alert(response.statusText);
-      }
-    }
-  };
   
-  const signupFormHandler = async (event) => {
-    event.preventDefault();
+      const user = userData.get({ plain: true });
   
-    const name = document.querySelector('#name-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-  
-    if (name && email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({name, email, password }),
-        headers: { 'Content-Type': 'application/json' },
+      res.render('profile', {
+        ...user,
+        loggedIn: true
       });
-      console.log("response", response);
-      if (response.ok) {
-        // if successful, redirect the broswer to the home page
-        document.location.replace('/');
-      } else {
-        alert(response.statusText);
-      }
+    } catch (err) {
+      res.status(500).json(err);
     }
-  };
+  });
+
+// Use withAuth middleware to prevent access to route
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+      // Find the logged in user based on the session ID
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Listing }],
+      });
   
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
+      const user = userData.get({ plain: true });
   
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
-  
+      res.render('profile', {
+        ...user,
+        loggedIn: true
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+module.exports = router;
