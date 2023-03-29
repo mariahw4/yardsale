@@ -208,4 +208,19 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
+// Purchase route. Update "sold" to true.
+router.put("/:id/purchase", async (req, res) => {
+  try {
+    const listingData = await Listing.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    res.status(200).json(listingData);
+  } catch (err) {
+    res.status(500).json("Error purchasing item: " + err);
+  }
+});
+
 module.exports = router;
