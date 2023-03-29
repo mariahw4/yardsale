@@ -88,51 +88,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// ~~~ original get route. returns the object~~~
-
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const listingData = await Listing.findOne({
-//       where: {
-//         id: req.params.id,
-//       },
-//       attributes: [
-//         "id",
-//         "title",
-//         "description",
-//         "price",
-//         "image",
-//         "date_created",
-//       ],
-
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["name"],
-//         },
-
-//         // ~~~ For comments feature. Turned off for now ~~~
-//         // {
-//         //   model: Comment,
-//         //   attributes: ["id", "comment_content", "blog_id", "user_id"],
-//         //   include: {
-//         //     model: User,
-//         //     attributes: ["name"],
-//         //   },
-//         // },
-//       ],
-//     });
-//     if (!listingData) {
-//       res.status(404).json({ message: "No listing found with this id!" });
-//       return;
-//     }
-
-//     res.status(200).json(listingData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.post("/", withAuth, async (req, res) => {
   try {
     const newListing = await Listing.create({
@@ -224,3 +179,48 @@ router.put("/:id/purchase", async (req, res) => {
 });
 
 module.exports = router;
+
+// ~~~ original get route. returns the object~~~
+
+// router.get("/:id", async (req, res) => {
+//   try {
+//     const listingData = await Listing.findOne({
+//       where: {
+//         id: req.params.id,
+//       },
+//       attributes: [
+//         "id",
+//         "title",
+//         "description",
+//         "price",
+//         "image",
+//         "date_created",
+//       ],
+
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["name"],
+//         },
+
+//         // ~~~ For comments feature. Turned off for now ~~~
+//         // {
+//         //   model: Comment,
+//         //   attributes: ["id", "comment_content", "blog_id", "user_id"],
+//         //   include: {
+//         //     model: User,
+//         //     attributes: ["name"],
+//         //   },
+//         // },
+//       ],
+//     });
+//     if (!listingData) {
+//       res.status(404).json({ message: "No listing found with this id!" });
+//       return;
+//     }
+
+//     res.status(200).json(listingData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
