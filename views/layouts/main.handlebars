@@ -10,10 +10,10 @@
     <title>Yardsale</title>
 </head>
 
-<body class="bg-primary-subtle">
+<main class="bg-primary-subtle">
     <header class="bg-dark d-flex container-fluid justify-content-between" style="height: 8.1em;">
         <div class="d-inline">
-            <img src="../../public/images/yardsaleclear.png" alt="yardsale image"
+            <img src="/images/yardsaleclear.png" alt="yardsale image"
                 style="height: 100xp; width: 125px; margin: 5px; " class="col-1">
             <!-- <h1 class="bg-primary-subtle">Yard Sale</h1> -->
         </div>
@@ -21,23 +21,29 @@
             <input type="text" class="form-control col-4" placeholder="Search" aria-label="Search"
                 aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            
         </div>
+        <div class="align-self-center mx-3 logout-login-btn" >
+            <a href="/profile">Profile</a>
+            <a href="/">Home</a>
+            
         {{#if loggedIn}}
         {{!-- <a href="/" class="align-self-center mx-3"></a> | --}}
-        <a class="no-button align-self-center mx-3" id="logout">Logout</a>
+        <a class="no-button" id="logout">Logout</a>
         {{else}}
-        <a href="/login" class="align-self-center mx-3">Login</a>
+        <a href="/login">Login</a>
         {{/if}}
+       
+        </div>
     </header>
-    <div class="d-flex my-3 mx-3 justify-content-end">
-        <button type="button" class="btn btn-primary btn-lg ">Create Listing</button>
-    </div>
+    
+    <body>
     {{{body}}}
-
+    </body>
  {{!-- {{#if loggedIn}} --}}
   <script src="/js/logout.js"></script>
   {{!-- {{/if}} --}}
-</body>
+</main>
 
 </html>
 
