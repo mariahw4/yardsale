@@ -4,14 +4,11 @@
          <div class="card-body">
             <h5 class="card-title">{{listing.title}}</h5>
           
-            {{!-- {{#unless listing.sold}}
-            <h6>${{listing.price}} sold = {{listing.sold}}</h6>
-            {{/unless}} --}}
+            {{!-- Show price or SOLD depending on listing.sold --}}
             {{#if listing.sold}}
             <h6 class ="text-danger font-weight-bold">SOLD</h6>
-
             {{else}}
-             <h6>${{listing.price}}</h6>
+            <h6>${{listing.price}}</h6>
             {{/if}}
          
 
