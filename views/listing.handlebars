@@ -14,11 +14,17 @@
 
             <p class="card-text">{{listing.description}}</p>
             <div class="text-center">
-                {{#if listing.sold}}
-                <button class="btn btn-primary home-btn">Back To Listings</button>
-                {{else}}
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmPurchaseModal">Purchase</button>
-                {{/if}}
+               
+                    {{#if listing.sold}}
+                    <button class="btn btn-primary home-btn">Back To Listings</button>
+                    {{else}}
+                        {{#if loggedIn}}
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmPurchaseModal">Purchase</button>
+                        {{else}}
+                        <p><a href="/login">Please log in to purchase.</a></p>
+                        {{/if}}
+                    {{/if}}
+              
             </div>
         </div>
     </div>

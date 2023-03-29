@@ -80,7 +80,7 @@ router.get("/:id", async (req, res) => {
     // Pass serialized data and session flag into template
     res.status(200).render("listing", {
       listing,
-      // loggedIn: req.session.loggedIn,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log("catch called");
