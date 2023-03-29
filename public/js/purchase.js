@@ -14,6 +14,16 @@ const purchaseHandler = async () => {
   }
 };
 
+const reloadPage = () => location.reload();
+
+const homeBtnHandler = () => location.replace("/");
+
 document
   .querySelector(".purchase-btn")
   .addEventListener("click", purchaseHandler);
+
+document
+  .querySelector(".post-purchase-btn")
+  .addEventListener("click", reloadPage);
+
+document.querySelector(".home-btn").addEventListener("click", homeBtnHandler);

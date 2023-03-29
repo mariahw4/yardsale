@@ -3,11 +3,25 @@
         <img src="/images/kermit.jpg" class="card-img-top" alt="...">
          <div class="card-body">
             <h5 class="card-title">{{listing.title}}</h5>
-            <h6>${{listing.price}}</h6>
+          
+            {{!-- {{#unless listing.sold}}
+            <h6>${{listing.price}} sold = {{listing.sold}}</h6>
+            {{/unless}} --}}
+            {{#if listing.sold}}
+            <h6 class ="text-danger font-weight-bold">SOLD</h6>
+
+            {{else}}
+             <h6>${{listing.price}}</h6>
+            {{/if}}
+         
+
             <p class="card-text">{{listing.description}}</p>
             <div class="text-center">
-            <button class="btn btn-primary" data-bs-toggle="modal"
-      data-bs-target="#confirmPurchaseModal">Purchase</button>
+                {{#if listing.sold}}
+                <button class="btn btn-primary home-btn">Back To Listings</button>
+                {{else}}
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmPurchaseModal">Purchase</button>
+                {{/if}}
             </div>
         </div>
     </div>
@@ -61,7 +75,7 @@
         Congrats! You bought {{listing.title}} for ${{listing.price}}!
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#postPurchaseModal" data-bs-toggle="modal">Close</button>
+        <button class="btn btn-primary post-purchase-btn" data-bs-target="#postPurchaseModal" data-bs-toggle="modal">Close</button>
       </div>
     </div>
   </div>
