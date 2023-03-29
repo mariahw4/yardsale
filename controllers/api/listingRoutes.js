@@ -44,8 +44,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Draft 2 of listing detail route
-
+// Retrieves individual listing details and serializes data for Handlebars.
 router.get("/:id", async (req, res) => {
   try {
     const listingData = await Listing.findOne({
