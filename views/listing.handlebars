@@ -7,24 +7,24 @@
             <p class="card-text">{{listing.description}}</p>
             <div class="text-center">
             <button class="btn btn-primary" data-bs-toggle="modal"
-      data-bs-target="#exampleModal">Purchase</button>
+      data-bs-target="#confirmPurchaseModal">Purchase</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Purchase modal -->
+{{!-- Confirm Purchase modal --}}
 <div
     class="modal fade"
-    id="exampleModal"
+    id="confirmPurchaseModal"
     tabindex="-1"
-    aria-labelledby="exampleModalLabel"
+    aria-labelledby="confirmPurchaseModalLabel"
     aria-hidden="true"
 >
     <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
+        <h1 class="modal-title fs-5" id="confirmPurchaseModalLabel">
             Confirm Purchase
         </h1>
         <button
@@ -43,10 +43,28 @@
         >
             Go Back
         </button>
-        <button type="button" class="btn btn-primary purchase-btn">Buy Now</button>
+        <button class="btn btn-primary purchase-btn" data-bs-target="#postPurchaseModal" data-bs-toggle="modal">Buy Now</button>
         </div>
     </div>
     </div>
+</div>
+
+{{!-- Post-Purchase modal --}}
+<div class="modal fade" id="postPurchaseModal" aria-hidden="true" aria-labelledby="postPurchaseModalLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="postPurchaseModalLabel">Purchase Confirmed</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Congrats! You bought {{listing.title}} for ${{listing.price}}!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#postPurchaseModal" data-bs-toggle="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
  <script src="/js/purchase.js"></script>
