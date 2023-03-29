@@ -3,16 +3,14 @@
     <div class="card mb-3 col-7" style="max-width: 80%;">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="../public/images/kermit.jpg" class="img-fluid rounded-start object-fit" alt="kermit-plushie"
+                <img src="/images/kermit.jpg" class="img-fluid rounded-start object-fit" alt="kermit-plushie"
                     style="max-height: 18.9rem; width: 100%;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">{{listing.title}}</h5>
                     <p class="card-text">{{listing.description}}</p>
-                    <p class="card-text"><small
-                            class="text-muted">{{listing.date_created}}</small><span>{{listing.user.name}}</span>
-                    </p>
+                    <p class="card-text"><small class="text-muted">Posted by {{listing.user.name}} on {{format_date listing.date_created}}</small></p>
                 </div>
             </div>
         </div>
