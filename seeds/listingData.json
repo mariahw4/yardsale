@@ -1,0 +1,39 @@
+[
+    {
+        "title": "Quarter",
+        "description": "A U.S. quarter.",
+        "price": "100",
+        "image": "/images/kermit.jpg"
+    },
+    {
+        "title": "Socks",
+        "description": "Pair of used socks from 1990. Vintage.",
+        "price": "10"
+    },
+    {
+        "title": "Piano",
+        "description": "Grandma's old piano, she doesn't use it anymore...",
+        "price": "300"
+    },
+    {
+        "title": "Kermit Plush",
+        "description": "A plushie of kermit the frog.",
+        "price": "20"
+    },
+    {
+        "title": "TV",
+        "description": "80' Samsung",
+        "price": "500"
+    },
+    {
+        "title": "Ferrari F8",
+        "description": "Highs Undeniable supercar presence, bona fide supercar acceleration and handling, surprisingly comfortable ride",
+        "price": "283950"
+    },
+    {
+        "title": "iPhone 14 Pro Max",
+        "description": "iPhone",
+        "price": "1000",
+        "image": "/images/iphone14.jpg"
+    }
+]
