@@ -26,12 +26,12 @@
             <a href="/profile" class="mx-3 text-decoration-none fs-3">Profile</a>
             <a href="/" class="mx-3 text-decoration-none fs-3">Home</a>
         </div>
-        <div class="align-self-center mx-3 logout-login-btn fs-5" id="logout">
+        <div class="align-self-center mx-3 logout-login-btn fs-5" >
 
 
             {{#if loggedIn}}
             {{!-- <a href="/" class="align-self-center mx-3"></a> | --}}
-            <a href='/' class=" text-decoration-none">Log Out</a>
+            <a id="logout" href='/' class=" text-decoration-none">Log Out</a>
             {{else}}
             <a href="/login" class="text-decoration-none">Log In</a>
             {{/if}}
