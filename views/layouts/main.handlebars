@@ -28,22 +28,19 @@
         </div>
         <div class="align-self-center mx-3 logout-login-btn fs-5" >
 
+            {{!-- If logged in, show Log Out link. If logged out, show Log In link. --}}
+            <a href="/login" {{#if loggedIn}} style="display:none" {{/if}} class="text-decoration-none">Log In</a>
 
-            {{#if loggedIn}}
-            {{!-- <a href="/" class="align-self-center mx-3"></a> | --}}
-            <a id="logout" href='/' class=" text-decoration-none">Log Out</a>
-            {{else}}
-            <a href="/login" class="text-decoration-none">Log In</a>
-            {{/if}}
+            <a href='#' {{#unless loggedIn}} style="display:none" {{/unless}} class=" text-decoration-none" id="logout" >Log Out</a>
         </div>
     </header>
 
     <body class="bg-primary-subtle">
         {{{body}}}
     </body>
-    {{!-- {{#if loggedIn}} --}}
+
     <script src="/js/logout.js"></script>
-    {{!-- {{/if}} --}}
+
 </main>
 
 </html>
