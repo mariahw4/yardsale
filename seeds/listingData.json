@@ -33,6 +33,7 @@
     {
         "title": "iPhone 14 Pro Max",
         "description": "iPhone",
-        "price": "1000"
+        "price": "1000",
+        "image": "/images/iphone14.jpg"
     }
 ]

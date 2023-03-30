@@ -8,17 +8,20 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                     <a href="/api/listings/{{listing.id}}"><h5 class="card-title">{{listing.title}}</h5></a>
+                    <a href="/api/listings/{{listing.id}}">
+                        <h5 class="card-title">{{listing.title}}</h5>
+                    </a>
 
                     {{!-- Show price or SOLD depending on listing.sold --}}
-                     {{#if listing.sold}}
-                    <h6 class ="text-danger font-weight-bold">SOLD</h6>
+                    {{#if listing.sold}}
+                    <h6 class="text-danger font-weight-bold">SOLD</h6>
                     {{else}}
                     <h6>${{listing.price}}</h6>
                     {{/if}}
 
                     <p class="card-text">{{listing.description}}</p>
-                    <p class="card-text"><small class="text-muted">Posted by {{listing.user.name}} on {{format_date listing.date_created}}</small></p>
+                    <p class="card-text"><small class="text-muted">Posted by {{listing.user.name}} on {{format_date
+                            listing.date_created}}</small></p>
                 </div>
             </div>
         </div>
