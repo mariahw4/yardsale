@@ -7,14 +7,13 @@ const newFormHandler = async (event) => {
     const fileInput = document.querySelector('#file-input')
 
     console.log("fileInput", fileInput.files[0])
-    return
+    
     console.log(title, price, description)
     const formData = new FormData();
     formData.append("title", title)
     formData.append("price", price)
     formData.append("description", description)
     formData.append("Image", fileInput.files[0])
-    // return
 
     if (title && price && description) {
         const response = await fetch(`/api/listings/upload`, {
