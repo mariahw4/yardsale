@@ -33,18 +33,24 @@ SO THAT i can continue to have the things i want and recycle the things I do not
 ## Acceptance Criteria
 ```
 GIVEN an interactive classifieds webpage 
+
 WHEN I view the home page
 THEN I see all the current for-sale listings
-WHEN I’m logged out and click anywhere on the home page
-THEN I am prompted to log in or sign up
+
 WHEN I click create a listing
 THEN I can upload an image and item details which are posted to the site
+
 WHEN I view a listings detail
 THEN I see its image, price and description, and can click a button to purchase
-WHEN I click to purchase an item
+
+WHEN I click to purchase an item and I’m logged in
 THEN I see a modal to confirm or exit
+
+When I try to purchase and I’m logged out
+THEN I’m prompted to log in or sign up
+
 WHEN I confirm my purchase
-THEN the item is marked as sold on the home page
+THEN the item is marked as sold and can no longer be purchased
 ```
 
 ### Screenshot
