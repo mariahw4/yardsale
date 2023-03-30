@@ -39,6 +39,10 @@ Listing.init(
         key: "id",
       },
     },
+    sold: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     sequelize,

@@ -1,0 +1,94 @@
+<div class="container-fluid d-flex justify-content-center">
+    <div class="card" style="width: 70%;">
+        <img src="/images/kermit.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+            <h5 class="card-title">{{listing.title}}</h5>
+          
+            {{!-- Show price or SOLD depending on listing.sold --}}
+            {{#if listing.sold}}
+            <h6 class ="text-danger font-weight-bold">SOLD</h6>
+            {{else}}
+            <h6>${{listing.price}}</h6>
+            {{/if}}
+         
+
+            <p class="card-text">{{listing.description}}</p>
+            <p class="card-text"><small class="text-muted">Posted by {{listing.user.name}} on {{format_date listing.date_created}}</small></p>
+
+            <div class="text-center">
+                    {{!-- Change button depending on sold state and logged in state. --}}
+                    {{#if listing.sold}}
+                    <button class="btn btn-primary home-btn">Back To Listings</button>
+                    {{else}}
+                        {{#if loggedIn}}
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmPurchaseModal">Purchase</button>
+                        {{else}}
+                       <a class="btn btn-primary btn-lg" href="/login" role="button">Please log in to purchase.</a>
+                        {{/if}}
+                    {{/if}}
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Confirm Purchase modal --}}
+<div
+    class="modal fade"
+    id="confirmPurchaseModal"
+    tabindex="-1"
+    aria-labelledby="confirmPurchaseModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="confirmPurchaseModalLabel">
+            Confirm Purchase
+        </h1>
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+        ></button>
+        </div>
+        <div class="modal-body">You are about to buy {{listing.title}} for ${{listing.price}}.</div>
+        <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+        >
+            Go Back
+        </button>
+        <button class="btn btn-primary purchase-btn" data-bs-target="#postPurchaseModal" data-bs-toggle="modal">Buy Now</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+{{!-- Post-Purchase modal --}}
+<div class="modal fade" id="postPurchaseModal" aria-hidden="true" aria-labelledby="postPurchaseModalLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="postPurchaseModalLabel">Purchase Confirmed</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Congrats! You bought {{listing.title}} for ${{listing.price}}!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary post-purchase-btn" data-bs-target="#postPurchaseModal" data-bs-toggle="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <script src="/js/purchase.js"></script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
