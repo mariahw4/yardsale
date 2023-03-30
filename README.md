@@ -22,6 +22,8 @@ By: Mariah Wear, David Lee, Joseph Serrato, and Christopher DuBois
 
 ### The challenge
 
+The challenge was to work together within a single github repository to build a functional full-stack application. 
+
 ## User Story
 ```
 AS a buyer or seller of fine goods
@@ -31,29 +33,37 @@ SO THAT i can continue to have the things i want and recycle the things I do not
 ## Acceptance Criteria
 ```
 GIVEN an interactive classifieds webpage 
+
 WHEN I view the home page
 THEN I see all the current for-sale listings
-WHEN I’m logged out and click anywhere on the home page
-THEN I am prompted to log in or sign up
+
 WHEN I click create a listing
 THEN I can upload an image and item details which are posted to the site
+
 WHEN I view a listings detail
 THEN I see its image, price and description, and can click a button to purchase
-WHEN I click to purchase an item
+
+WHEN I click to purchase an item and I’m logged in
 THEN I see a modal to confirm or exit
+
+When I try to purchase and I’m logged out
+THEN I’m prompted to log in or sign up
+
 WHEN I confirm my purchase
-THEN the item is marked as sold on the home page
+THEN the item is marked as sold and can no longer be purchased
 ```
 
 ### Screenshot
 
-![](./screenshot.jpg)
+Screenshot of homepage: ![](./public/images/screenshot-heroku.png)
+
+GIF to show functionality: ![](./public/images/Yardsale.gif)
 
 
 ### Links
 
-- Solution URL: [Github Repo](https://your-solution-url.com)
-- Live Site URL: [Deployed on Heroku](https://your-live-site-url.com)
+- Solution URL: [Github Repo](https://github.com/mariahw4/yardsale)
+- Live Site URL: [Deployed on Heroku](https://yardsale-application.herokuapp.com/)
 
 ## Our process
 
@@ -80,18 +90,24 @@ THEN the item is marked as sold on the home page
 
 ### Usage
 
-<!-- need something here!!  -->
+This application is straight forward to use.  On the first visit to the site the user is prompted to sign up for an account which logs them in.  While in logged out status the user is able to see the home page list of listings and even view individual listings.  From the user's profile they're able to see any listing they have created and also create a new listing.  
 
 ### What We learned
 
-<!-- need to put this in -->
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+-The biggest thing we learned in this project was how to use Multer to upload images to our listing.  We had to set up local disk storage for the images as well to then be able to render them on the screen. 
+
+-This project also helped expand our knowledge of teamwork within a github repository.  We practiced git etiquette and worked as a team to resolve any conflicts that arose along the way.  
 
 
 ### Continued development
 
-<!-- need to put a few things in here -->
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+This application has a lot of room for improvement.  A few features that we would love to have and work on moving forward are:
+  - Functional search bar to find listings.
+  - The ability to add multiple photos at once.
+  - The ability to comment on listings.
+  - The ability to see a list of all listings purchased on the profile page.
+  - Bidding system.
+  - The ability for the site to accept actual payment.
 
 ### Useful resources
 
@@ -106,14 +122,12 @@ https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
 ## Authors
 
-- Website - [Christopher DuBois - Github Profile](https://github.com/rhubarb414)
-- Website - [David Lee - Github Profile](https://github.com/kpxcrew)
-- Website - [Joseph Serrato - Github Profile](https://github.com/Jsrra)
-- Website - [Mariah Wear - Github Profile](https://github.com/mariahw4)
+- [Christopher DuBois - Github Profile](https://github.com/rhubarb414)
+- [David Lee - Github Profile](https://github.com/kpxcrew)
+- [Joseph Serrato - Github Profile](https://github.com/Jsrra)
+- [Mariah Wear - Github Profile](https://github.com/mariahw4)
 
 
 ## Acknowledgments
 
-<!-- can do this or not! Def throw a thanks to Mark/Philip and TAs! -->
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
+We want to give a big thank you to Clarence for helping us make Multer work.  A big general thank you to Mark and the other TAs for the program! We would also love to give a specific thank you to Philip for helping us solve the problem when "nothing was wrong" and recommending Multer which should "only take about 30 minutes to setup"!
