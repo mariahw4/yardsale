@@ -48,41 +48,6 @@ sequelize.sync({ force: false }).then(() => {
 
 // TODO: Split up multer ...
 
-// const express = require("express")
-// const app = express()
-// const exphbs = require('express-handlebars');
-// const hbs = exphbs.create({});
-// const multer = require("multer")
 
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }))
-
-// app.engine('handlebars', hbs.engine);
-// app.set("view engine", "handlebars")
-
-
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, 'images')
-//     },
-//     filename: function (req, file, cb) {
-//         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-//         cb(null, file.fieldname + '-' + uniqueSuffix)
-//     }
-// })
-
-// const upload = multer({ storage: storage })
-
-// app.get("/upload", (req, res) => {
-//     res.render("homepage")
-// })
-
-// app.post("/upload", upload.single("Imaged"), (req, res) => {
-//     res.send("Image uploaded")
-//     console.log(req.file);
-// })
-
-// app.listen(3001)
-// console.log(`Listening on 3001`);
 
 

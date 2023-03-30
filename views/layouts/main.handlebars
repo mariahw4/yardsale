@@ -13,6 +13,7 @@
 <main class="bg-primary-subtle">
     <header class="bg-dark d-flex container-fluid justify-content-between" style="height: 8.1em;">
         <div class="d-inline">
+
             <a href="/"><img src="/images/yardsaleclear.png" alt="yardsale image"
                 style="height: 100xp; width: 125px; margin: 5px; " class="col-1"></a>
             <!-- <h1 class="bg-primary-subtle">Yard Sale</h1> -->
@@ -34,18 +35,15 @@
         {{else}}
         <a href="/login" class="text-decoration-none">Log In</a>
         {{/if}}
-       
         </div>
     </header>
-    
+
     <body>
-    {{{body}}}
+        {{{body}}}
     </body>
- {{!-- {{#if loggedIn}} --}}
-  <script src="/js/logout.js"></script>
-  {{!-- {{/if}} --}}
+    {{!-- {{#if loggedIn}} --}}
+    <script src="/js/logout.js"></script>
+    {{!-- {{/if}} --}}
 </main>
 
 </html>
-
- 
