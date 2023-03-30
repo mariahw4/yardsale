@@ -2,7 +2,8 @@
     {
         "title": "Quarter",
         "description": "A U.S. quarter.",
-        "price": "100"
+        "price": "100",
+        "image": "/images/kermit.jpg"
     },
     {
         "title": "Socks",
