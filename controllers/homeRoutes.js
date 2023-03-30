@@ -3,11 +3,6 @@ const sequelize = require("../config/connection");
 const { Listing, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-// Placeholder route for homepage
-// router.get("/", (req, res) => {
-//   res.json("Home route");
-// });
-
 router.get("/", async (req, res) => {
   try {
     // Get all listings and JOIN with user data
