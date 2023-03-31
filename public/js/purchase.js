@@ -1,5 +1,5 @@
 const purchaseHandler = async () => {
-  // Gotta be a better way to get the id? delete
+  // Gotta be a better way to get the id?
   const id = document.location.pathname.split("/")[3];
   const response = await fetch(`/api/listings/${id}/purchase`, {
     method: "PUT",
